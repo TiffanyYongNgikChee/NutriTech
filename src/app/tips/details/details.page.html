@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button [routerLink]="['/tips']">
+        Back
+      </ion-button>
+    </ion-buttons>
+    
+      <a [routerLink]="['/home']">
+        <img src="assets/icon/home-outline.svg" style="width: 24px; height: 24px;">
+      </a>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+<ion-card>
+  <ion-card-header>
+    <ion-card-title>{{ foodDetails.description }}</ion-card-title>
+  </ion-card-header>
+
+  <ion-card-content>
+    <ion-list>
+      <ion-item *ngFor="let nutrient of foodDetails.foodNutrients">
+        <ion-label>{{ nutrient.nutrient.name }}:</ion-label>
+        <ion-text>{{ nutrient.amount }} {{ nutrient.nutrient.unitName }}</ion-text>
+      </ion-item>
+    </ion-list>
+  </ion-card-content>
+</ion-card>
+<ion-button class="saveButton" (click)="saveToStorage(foodDetails.description)">Save</ion-button>
+<ion-infinite-scroll>
+  <ion-infinite-scroll-content></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-content [fullscreen]="true">
+  <!-- Header -->
+  <div class="header">
+    <h1>Articles</h1>
+    <a [routerLink]="['/home']" class="home">
+      <img src="assets/icon/home-outline.svg"/>
+    </a>
+  </div>
+  
+  <div class="categories">
+    <ion-chip color="primary" (click)="nutrition()">Nutrition</ion-chip>
+    <ion-chip color="secondary" (click)="exercise()">Exercise</ion-chip>
+    <ion-chip color="success" (click)="wellness()">Wellness</ion-chip>
+    <ion-chip color="warning" (click)="diet()">Diet</ion-chip>
+    <ion-chip color="danger" (click)="mental()">Mental</ion-chip>
+    <ion-chip color="medium" (click)="hydration()">Hydration</ion-chip>
+    <ion-chip color="dark" (click)="sleep()">Sleep</ion-chip>
+    <ion-chip color="primary" (click)="fitness()">Fitness</ion-chip>
+    <ion-chip color="secondary" (click)="stress()">Stress</ion-chip>
+    <ion-chip color="success" (click)="food()">Food</ion-chip>
+  </div>
+  
+  <ion-card *ngFor="let n of searchResult">
+    <img src="{{n.image_url}}"/>
+    <ion-card-header>
+      <ion-card-subtitle>{{n.description}}</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <a [href]="n.url" target="_blank">{{ n.source }}</a>
+        </ion-card-content>
+      </ion-card>
+  
+  
+  </ion-content>

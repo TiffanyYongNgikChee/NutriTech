@@ -1,0 +1,57 @@
+<ion-content>
+  <!-- Header -->
+  
+  <div class="header">
+    <ion-button [routerLink]="['/tips']">Back</ion-button>
+    <h1>Nutrition Tips</h1>
+
+    <a [routerLink]="['/home']">
+      <img src="assets/icon/home-outline.svg"/>
+    </a>
+  </div>
+ 
+  <!-- Category -->
+  <div class="categories"></div>
+  
+ <!-- List of search results -->
+ <ion-list>
+  <ion-item>
+    Search result of '{{ searchQuery }}'
+  </ion-item>
+  
+</ion-list>
+
+<ion-card *ngFor="let food of information">
+  <ion-card-header>
+    <ion-card-title>{{ food.description }}</ion-card-title>
+    <ion-card-subtitle>Brand Owner: {{ food.brandOwner }}</ion-card-subtitle>
+  </ion-card-header>
+  <ion-card-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="6">
+          <ion-label>Ingredient:</ion-label>
+          <ion-text>{{ food.ingredient }}</ion-text>
+        </ion-col>
+        <ion-col size="6">
+          <ion-label>Market Country:</ion-label>
+          <ion-text>{{ food.marketCountry }}</ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="6">
+          <ion-label>Category:</ion-label>
+          <ion-text>{{ food.foodCategory }}</ion-text>
+        </ion-col>
+        <ion-col size="6" class="ion-text-right">
+          <ion-button (click)="goToDetails(food.fdcId)">Save</ion-button>
+          <ion-button (click)="goToDetails(food.fdcId)">Details</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-card-content>
+</ion-card>
+<ion-infinite-scroll>
+  <ion-infinite-scroll-content loadingText="Please wait..." loadingSpinner="bubbles"></ion-infinite-scroll-content>
+</ion-infinite-scroll>
+</ion-content> 
