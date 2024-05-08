@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormControl, FormsModule } from '@angular/forms';
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonSearchbar, IonTabs, IonTabBar, IonTabButton, IonIcon, IonItem, IonLabel, IonList, IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonGrid, IonRow, IonCol, IonText, IonInfiniteScroll, IonInfiniteScrollContent } from '@ionic/angular/standalone';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonImg, IonSearchbar, IonTabs, IonTabBar, IonTabButton, IonIcon, IonItem, IonLabel, IonList, IonButton, IonButtons, IonCard, IonCardHeader, IonCardTitle, IonCardSubtitle, IonCardContent, IonGrid, IonRow, IonCol, IonText, IonInfiniteScroll, IonInfiniteScrollContent, IonPopover } from '@ionic/angular/standalone';
 import { TipsService } from 'src/app/services/tips.service';
 import { RouterLinkWithHref } from '@angular/router';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,12 +14,13 @@ import { DetailsTipsService } from 'src/app/services/details-tips.service';
   templateUrl: './search.page.html',
   styleUrls: ['./search.page.scss'],
   standalone: true,
-  imports: [RouterLinkWithHref,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonImg,IonSearchbar,IonTabs,IonTabBar,IonTabButton,IonIcon, IonItem,IonLabel, IonList, IonSearchbar, IonButton, ReactiveFormsModule, IonButtons, IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent,IonGrid,IonRow,IonCol,IonText,IonInfiniteScroll,IonInfiniteScrollContent]
+  imports: [RouterLinkWithHref,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule,IonImg,IonSearchbar,IonTabs,IonTabBar,IonTabButton,IonIcon, IonItem,IonLabel, IonList, IonSearchbar, IonButton, ReactiveFormsModule, IonButtons, IonCard,IonCardHeader,IonCardTitle,IonCardSubtitle,IonCardContent,IonGrid,IonRow,IonCol,IonText,IonInfiniteScroll,IonInfiniteScrollContent,IonPopover]
 })
 export class SearchPage implements OnInit {
 
   information: any=[];
   searchQuery:string='';
+
 
   constructor(private router:Router,private searchService:SearchService, private tipsService:TipsService, private detailsService:DetailsTipsService) { }
 

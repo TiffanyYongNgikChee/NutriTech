@@ -1,19 +1,31 @@
 <ion-content>
-  <!-- Header -->
-  <div class="header">
-    <h1>Collection</h1>
-    <a [routerLink]="['/home']" class="home">
-      <img src="assets/icon/home-outline.svg"/>
-    </a>
-  </div>
-  
-  <p>{{foodDetails}}</p>
-    <ion-card *ngFor="let foodDetail of foodDetails">
-      <ion-card-header>
-        <ion-card-title>The Food Details: {{ foodDetail}}</ion-card-title>
-      </ion-card-header>
-    </ion-card>
-    </ion-content>
-   
-  
-  
+<!-- Header -->
+<div class="header">
+  <h1>Collection</h1>
+  <a id="hover-trigger" (click)="toggleReorder()" class="edit">
+    <img src="assets/icon/create-outline.svg"/>
+  </a>
+  <ion-popover trigger="hover-trigger" triggerAction="hover">
+    <ng-template>
+      <ion-content class="ion-padding">Edit</ion-content>
+    </ng-template>
+  </ion-popover>
+  <a [routerLink]="['/home']" class="home">
+    <img src="assets/icon/home-outline.svg"/>
+  </a>
+</div>
+
+<ion-list>
+  <ion-reorder-group [disabled]="isDisabled" (ionItemReorder)="reorderItems($any($event))">
+    <ion-item *ngFor="let foodDetail of foodDetails; let i = index">
+        <ion-label>{{i+1}} The Food Details: {{ foodDetail }}</ion-label>
+        <ion-button [disabled]="isDisabled" slot="end" (click)="deleteItem(i)">
+        <img src="assets/icon/trash-outline.svg" width="20px"/>
+        </ion-button>
+        <ion-reorder slot="end"></ion-reorder>
+    </ion-item>
+  </ion-reorder-group>
+</ion-list>
+  </ion-content>
+ 
+

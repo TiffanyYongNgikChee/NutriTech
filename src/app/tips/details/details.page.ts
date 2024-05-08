@@ -1,20 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonText, IonTitle, IonToolbar } from '@ionic/angular/standalone';
+import { IonButton, IonButtons, IonCard, IonCardContent, IonCardHeader, IonCardTitle, IonContent, IonHeader, IonInfiniteScroll, IonInfiniteScrollContent, IonItem, IonLabel, IonList, IonPopover, IonText, IonTitle, IonToolbar } from '@ionic/angular/standalone';
 import { TipsService } from 'src/app/services/tips.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DetailsTipsService } from 'src/app/services/details-tips.service';
 import { SearchService } from 'src/app/services/search.service';
 import { RouterLinkWithHref } from '@angular/router';
 import { Storage } from '@ionic/storage-angular';
+import { PopoverController } from '@ionic/angular/standalone';
 
 @Component({
   selector: 'app-details',
   templateUrl: './details.page.html',
   styleUrls: ['./details.page.scss'],
   standalone: true,
-  imports: [RouterLinkWithHref,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader,IonCardTitle,IonCardContent,IonList,IonItem,IonLabel,IonText,IonButtons,IonInfiniteScroll,IonInfiniteScrollContent,IonButton]
+  imports: [RouterLinkWithHref,IonContent, IonHeader, IonTitle, IonToolbar, CommonModule, FormsModule, IonCard, IonCardHeader,IonCardTitle,IonCardContent,IonList,IonItem,IonLabel,IonText,IonButtons,IonInfiniteScroll,IonInfiniteScrollContent,IonButton,IonPopover]
 })
 export class DetailsPage implements OnInit {
 
@@ -22,12 +23,14 @@ export class DetailsPage implements OnInit {
   information: any;
   foodDetails: any;
   searchQuery: string='';
-  DataArray: Array<string>=[];
+  query:any[]=[];
+  showPopover: boolean = false;
+  myPopoverEvent: Event | undefined;
 
   constructor(
     private searchService:SearchService,
     private detailsService:DetailsTipsService,
-    private tipsService: TipsService,
+    public popoverController: PopoverController,
     private storage: Storage,
     private router:Router) { }
 
@@ -39,29 +42,24 @@ export class DetailsPage implements OnInit {
           this.foodDetails = data;
         }
       );
-
     }
-
-    saveToStorage(query:string){
-      //this.storage.setItem('query', JSON.stringify(this.DataArray));
-    }
-   /* async ionViewWillEnter() {
+   
+   async ionViewWillEnter() {
       await this.storage.create();
-      this.savedQuery = await this.storage.get('savedQuery') || [];
-      if (this.savedQuery.length === 0) {
-        console.log("Storage is empty");
-      } else {
-        console.log("Storage has data");
-      
-    }
+      this.query=await this.getStorage();
   }
 
     async saveToStorage(query:string) {
-        this.savedQuery.push(query.trim());
-        await this.storage.set('savedQuery', this.savedQuery);
-        query='';
-    
-
+      if (query.trim() != '') {
+        let savedQuery = await this.storage.get('query')||[];
+        savedQuery.push(query.trim());
+        await this.storage.set('query', savedQuery);
+        query = '';
+      }
     }
-    */
+
+    async getStorage(){
+      return await this.storage.get('query')||[];
+    }
+    
   }

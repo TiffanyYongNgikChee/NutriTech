@@ -12,7 +12,6 @@
   </ion-toolbar>
 </ion-header>
 
-
 <ion-content>
 <ion-card>
   <ion-card-header>
@@ -28,7 +27,12 @@
     </ion-list>
   </ion-card-content>
 </ion-card>
-<ion-button class="saveButton" (click)="saveToStorage(foodDetails.description)">Save</ion-button>
+<ion-button id="click-trigger" class="saveButton" (click)="saveToStorage(foodDetails.description)">Save</ion-button>
+<ion-popover trigger="click-trigger" triggerAction="click">
+  <ng-template>
+    <ion-content class="ion-padding">Saved To Collection!</ion-content>
+  </ng-template>
+</ion-popover>
 <ion-infinite-scroll>
   <ion-infinite-scroll-content></ion-infinite-scroll-content>
 </ion-infinite-scroll>
