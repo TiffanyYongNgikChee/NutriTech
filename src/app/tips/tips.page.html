@@ -1,14 +1,16 @@
   
-  <ion-content color="light" [fullscreen]="true">
+  <ion-content color="primary" [fullscreen]="true">
     <!-- Header -->
-    <div class="header">
-      <h1>Nutrition Tips</h1>
-      <a [routerLink]="['/home']" class="home">
-        <img src="assets/icon/home-outline.svg"/>
-      </a>
-    </div>
+    <ion-header>
+      <div class="header">
+        <h1>Nutrition Tips</h1>
+        <a [routerLink]="['/home']" class="home">
+          <img src="assets/icon/home-outline.svg"/>
+        </a>
+      </div>
+    </ion-header>
   
-    <ion-toolbar>
+    <ion-toolbar color="primary">
       <ion-searchbar [(ngModel)]="searchQuery" (ionChange)="search()" placeholder="Enter Query"></ion-searchbar>
       <ion-buttons slot="end">
         <ion-button size="small" (click)="goAnotherPage()">Search</ion-button>
@@ -53,23 +55,19 @@
       </ion-card-content>
       <ion-button (click)="goToDetails(defaultResults[2][0].fdcId)">Details</ion-button>
     </ion-card>
+
+    <ion-card>
+      <img alt="soup" src="assets/icon/soup.png" />
+      <ion-card-header>
+        <ion-card-title>{{defaultResults[3][7].description}}</ion-card-title>
+        <ion-card-subtitle>{{defaultResults[3][7].additionalDescriptions}}</ion-card-subtitle>
+      </ion-card-header>
     
-  
-    <ion-tabs>
-      <ion-tab-bar slot="bottom">
-        <ion-tab-button (click)="goHome()">
-          Home
-        </ion-tab-button>
-        <ion-tab-button tab="radio">
-          Recipe
-        </ion-tab-button>
-        <ion-tab-button tab="library">
-          News
-        </ion-tab-button>
-        <ion-tab-button tab="search">
-          Community
-        </ion-tab-button>
-      </ion-tab-bar>
-    </ion-tabs>
+      <ion-card-content>
+        Food Category: {{defaultResults[3][7].foodCategory}}
+      </ion-card-content>
+      <ion-button (click)="goToDetails(defaultResults[3][7].fdcId)">Details</ion-button>
+    </ion-card>
+
   
   </ion-content>

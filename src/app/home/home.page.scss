@@ -1,14 +1,11 @@
-ion-header {
-  background: transparent;
-  ion-item{
-    --background: transparent;
-    ion-avatar {
-      background: white;
-    }
-  }
-}
 
 ion-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100vh; // This ensures the content takes up the full height of the screen
+  padding-top: env(safe-area-inset-top); // This ensures proper padding at the top of the screen, considering the device notch, if any
   * {
     font-family: late;
   }
@@ -28,8 +25,9 @@ ion-content {
     top: 0;
     left: 0;
     transform: translateY(10vh);
-    padding-bottom: 8vh;
+    padding-bottom: 0;
     ion-row{
+      margin-bottom: 0rem;
       ion-col{
         ion-label{
           ion-note{
@@ -63,7 +61,46 @@ ion-content {
       color: #515151;
       font-size: 1.8rem;
       margin-bottom: 1.6rem;
-      margin-top:2.5rem;
+      margin-top:0rem;
     }
   }
 }
+
+.browser{
+  margin: 0rem 3rem 1rem 4rem;
+}
+.salad{
+  padding-top: 0;
+  margin-top: 0;
+ 
+}
+.all-features {
+  font-size: 55px; // Adjust the font size as needed
+    font-family: 'Arial'; // Change the font family as needed
+    font-weight: bold; // Make the text bold
+    background: linear-gradient(45deg, #FF0000, #FFA500, #FFFF00, #008000, #0000FF, #4B0082, #800080); // Rainbow color gradient
+    -webkit-background-clip: text; // Clip text to background
+    -webkit-text-fill-color: transparent; // Hide text fill color
+    text-align: center;
+  }
+
+  .rainbow-text {
+    font-size: 70px; // Adjust the font size as needed
+    font-family: 'Abril Fatface', sans-serif; // Change the font family to Abril Fatface
+    font-weight: bold; // Make the text bold
+    text-align: center;
+    background-image: linear-gradient(to right, #4caf50, #ffeb3b, #f44336); // Change the background gradient colors as needed
+    -webkit-background-clip: text; // Clip text to background
+    -webkit-text-fill-color: transparent; // Hide text fill color
+    padding: 10px; // Add some padding
+    
+  }
+  .news {
+    font-size: 45px; // Adjust the font size as needed
+      font-family: 'Arial'; // Change the font family as needed
+      font-weight: bold; // Make the text bold
+      background: linear-gradient(45deg, #FF0000, #FFA500, #FFFF00, #008000, #0000FF, #4B0082, #800080); // Rainbow color gradient
+      -webkit-background-clip: text; // Clip text to background
+      -webkit-text-fill-color: transparent; // Hide text fill color
+      text-align: center;
+    }

@@ -5,7 +5,7 @@ import { RouterLinkWithHref } from '@angular/router';
 import { Router } from '@angular/router';
 import { NewsService } from '../services/news.service';
 import { IonHeader, IonToolbar, IonTitle, IonContent, IonItem,IonMenuButton,IonAvatar, IonButton, IonIcon, IonGrid, IonRow, IonCol, IonLabel, IonNote, IonChip, IonText, IonThumbnail, IonCard, IonCardHeader, IonCardContent, IonCardSubtitle, IonCardTitle, IonList, IonMenu, IonButtons, IonSearchbar} from '@ionic/angular/standalone';
-
+import { Browser } from '@capacitor/browser';
 
 @Component({
   selector: 'app-home',
@@ -33,4 +33,5 @@ export class HomePage implements OnInit{
     }
     );
     }
+  
 }

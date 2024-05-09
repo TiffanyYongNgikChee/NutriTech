@@ -1,14 +1,15 @@
 <ion-content>
   <!-- Header -->
+  <ion-header>
+    <div class="header">
+      <ion-button [routerLink]="['/tips']" class="back">Back</ion-button>
+      <h1>Search</h1>
   
-  <div class="header">
-    <ion-button [routerLink]="['/tips']">Back</ion-button>
-    <h1>Nutrition Tips</h1>
-
-    <a [routerLink]="['/home']">
-      <img src="assets/icon/home-outline.svg"/>
-    </a>
-  </div>
+      <a [routerLink]="['/home']">
+        <img src="assets/icon/home-outline.svg"/>
+      </a>
+    </div>
+  </ion-header>
  
   <!-- Category -->
   <div class="categories"></div>

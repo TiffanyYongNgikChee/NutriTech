@@ -1,28 +1,33 @@
-.header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-    margin-top: 3rem;
-}
+
 .home{
     width: 24px;
     height: 24px;
-    margin-top: 0px;
+    padding-top: 2rem;
     margin-right: 2rem;
   }
   .edit{
     width: 24px;
     height: 24px;
-    margin-top: 0px;
-    margin-left: 5rem;
+    padding-top: 2rem;
+    margin-left: 1rem;
   }
 
-  h1{
-    font-size: 1.5rem;
-    font-weight: 600;
-    color: #515151;
-    margin-top: 0;
-    margin-left: 3.5rem;
+.header{
+    display: flex;
+    justify-content: space-between;
     margin-bottom: 1rem;
+    padding-top: 1rem;
+    background-color: #fffbc2;
+
+    h1{
+      font-size: 40px;
+      font-weight: bold;
+      color: #ab922d;
+      margin-left: 60px;
+      font-family: late;
+    }
+}
+
+*{
+  font-family: late;
 }

@@ -3,7 +3,16 @@
     justify-content: space-between;
     align-items: center;
     margin-bottom: 1rem;
-    margin-top: 3rem;
+    padding-top: 1rem;
+    background-color: #fffbc2;
+
+    h1{
+      font-size: 50px;
+      font-weight: bold;
+      color: #ab922d;
+      margin-left: 60px;
+      font-family: late;
+    }
 }
 .home{
     width: 24px;
@@ -13,7 +22,7 @@
   }
 
   h1{
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 600;
     color: #515151;
     margin-top: 0;
