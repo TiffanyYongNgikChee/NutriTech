@@ -1,20 +1,23 @@
-
-
+<!-- This sets the content to be fullscreen and tertiary color -->
 <ion-content [fullscreen]="true" color="tertiary">
-<div class="main-header"></div>
-
-
+  <!-- Main header -->
+  <div class="main-header"></div>
+<!-- Ionic grid -->
 <ion-grid>
+  <!-- Row for NutriTech title -->
   <ion-row>
     <ion-col>
+      <!-- Rainbow text for NutriTech -->
       <div class="rainbow-text">NutriTech</div>
     </ion-col>
   </ion-row>
+  <!-- Row for salad image -->
   <ion-row>
     <ion-col>
       <img alt="salad" src="assets/icon/salad.png" class="salad"/>
     </ion-col>
   </ion-row>
+  <!-- Row for line images -->
   <ion-row>
     <ion-col><img alt="line" src="assets/icon/apple.png" width="20px" height="20px"/></ion-col>
     <ion-col><img alt="line" src="assets/icon/apple.png" width="20px" height="20px"/></ion-col>
@@ -30,17 +33,19 @@
     <ion-col><img alt="line" src="assets/icon/apple.png" width="20px" height="20px"/></ion-col>
     <ion-col><img alt="line" src="assets/icon/apple.png" width="20px" height="20px"/></ion-col>
   </ion-row>
+   <!-- Row for all-features text -->
   <ion-row>
     <ion-col>  <div class="all-features">
       <span>F</span>ea<span>t</span>u<span>r</span>es</div></ion-col>
   </ion-row>
-  
+  <!-- Card for Categories -->
   <ion-card>
     <ion-card-header>
       <ion-card-title>Categories</ion-card-title>
     </ion-card-header>
     <ion-card-content>
       <ion-list>
+        <!-- Health News -->
         <ion-item>
           <ion-thumbnail slot="start">
             <img alt="News" src="assets/icon/newspaper.png" />
@@ -48,7 +53,8 @@
           <ion-label>Health News</ion-label>
           <ion-button [routerLink]="['/articles']">></ion-button>
         </ion-item>
-  
+        
+        <!-- Nutrition Tips -->
         <ion-item>
           <ion-thumbnail slot="start">
             <img alt="Nutrition Tips" src="assets/icon/idea.png" />
@@ -56,7 +62,8 @@
           <ion-label>Nutrition Search</ion-label>
           <ion-button [routerLink]="['/tips']">></ion-button>
         </ion-item>
-  
+
+         <!-- Favourite -->
         <ion-item>
           <ion-thumbnail slot="start">
             <img alt="Collection" src="assets/icon/recipe-book.png" />
@@ -64,7 +71,8 @@
           <ion-label>Favourite</ion-label>
           <ion-button [routerLink]="['/collections']">></ion-button>
         </ion-item>
-  
+        
+        <!-- Health Goal -->
         <ion-item lines="none">
           <ion-thumbnail slot="start">
             <img alt="goal" src="assets/icon/goals.png" />
@@ -75,8 +83,9 @@
       </ion-list>
     </ion-card-content>
   </ion-card>
+  <!-- Trending News -->
   <p class="news">Trending News</p>
-
+   <!-- Card for each news item -->
   <ion-card *ngFor="let n of news">
     <img src="{{n.image_url}}"/>
     <ion-card-header>

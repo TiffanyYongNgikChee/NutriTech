@@ -3,28 +3,38 @@
 <ion-header>
   <div class="header">
     <h1>Favourite</h1>
+    <!-- Button to trigger reorder -->
     <a id="hover-trigger" (click)="toggleReorder()" class="edit">
       <img src="assets/icon/create-outline.svg"/>
     </a>
+    <!-- Popover for edit option -->
     <ion-popover trigger="hover-trigger" triggerAction="hover">
       <ng-template>
         <ion-content class="ion-padding">Edit</ion-content>
       </ng-template>
     </ion-popover>
+    <!-- Button to navigate back to home -->
     <a [routerLink]="['/home']" class="home">
       <img src="assets/icon/home-outline.svg"/>
     </a>
   </div>
 </ion-header>
+<!-- Collection image -->
 <img alt="collection" src="assets/icon/collection.png"/>
+<!-- List of favourite items -->
 <ion-list>
+  <!-- Reorder group -->
   <ion-reorder-group [disabled]="isDisabled" (ionItemReorder)="reorderItems($any($event))">
+    <!-- Favourite item -->
     <ion-item *ngFor="let foodDetail of foodDetails; let i = index">
-        <ion-label>{{i+1}} {{ foodDetail }}</ion-label>
-        <ion-button [disabled]="isDisabled" slot="end" (click)="deleteItem(i)">
-        <img src="assets/icon/trash-outline.svg" width="20px"/>
-        </ion-button>
-        <ion-reorder slot="end"></ion-reorder>
+      <!-- Favourite item label --> 
+      <ion-label>{{i+1}} {{ foodDetail }}</ion-label>
+      <!-- Delete button for the favourite item -->  
+      <ion-button [disabled]="isDisabled" slot="end" (click)="deleteItem(i)">
+      <img src="assets/icon/trash-outline.svg" width="20px"/>
+      </ion-button>
+      <!-- Reorder button for the favourite item --> 
+      <ion-reorder slot="end"></ion-reorder>
     </ion-item>
   </ion-reorder-group>
 </ion-list>

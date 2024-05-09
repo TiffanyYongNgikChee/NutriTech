@@ -19,6 +19,7 @@ export class ArticlesPage implements OnInit {
   constructor(private newsService:NewsService) { }
 
   ngOnInit() {
+    // Initial search for health articles
     this.newsService.searchNews('health').subscribe(
       (data)=>{
         this.searchResult = data.data;
@@ -26,6 +27,7 @@ export class ArticlesPage implements OnInit {
     )
   }
   
+  // Function to search news based on category
   nutrition(){
     this.newsService.searchNews('nutrition').subscribe(
       (data)=>{

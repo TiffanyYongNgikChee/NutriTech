@@ -19,13 +19,13 @@ import { PopoverController } from '@ionic/angular/standalone';
 })
 export class DetailsPage implements OnInit {
 
-  fdcId: any;
-  information: any;
-  foodDetails: any;
-  searchQuery: string='';
-  query:any[]=[];
-  showPopover: boolean = false;
-  myPopoverEvent: Event | undefined;
+  fdcId: any; // Variable to store the FDC ID of the food item
+  information: any; // Variable to store food information
+  foodDetails: any; // Variable to store detailed food information
+  searchQuery: string=''; // Variable to store search query
+  query:any[]=[]; // Variable to store saved queries
+  showPopover: boolean = false;  // Boolean variable to control the visibility of the popover
+  myPopoverEvent: Event | undefined; // Variable to store popover event
 
   constructor(
     private searchService:SearchService,
@@ -34,32 +34,37 @@ export class DetailsPage implements OnInit {
     private storage: Storage,
     private router:Router) { }
 
+    // Initialization
     ngOnInit(): void {
+      // Get FDC ID from details service
       this.fdcId =  this.detailsService.fdcId;
+      // Get food details from API
       this.detailsService.getFoodDetails(this.fdcId).subscribe(
         (data) => {
           console.log(data); // Log the response data
-          this.foodDetails = data;
+          this.foodDetails = data; // Store food details
         }
       );
     }
    
+  // Lifecycle hook - called just before the component is displayed
    async ionViewWillEnter() {
-      await this.storage.create();
-      this.query=await this.getStorage();
+      await this.storage.create(); // Create storage if not exists
+      this.query=await this.getStorage(); // Get saved queries from storage
   }
 
+  // Function to save query to storage
     async saveToStorage(query:string) {
-      if (query.trim() != '') {
-        let savedQuery = await this.storage.get('query')||[];
-        savedQuery.push(query.trim());
-        await this.storage.set('query', savedQuery);
-        query = '';
+      if (query.trim() != '') { // Check if query is not empty
+        let savedQuery = await this.storage.get('query')||[]; // Get saved queries from storage
+        savedQuery.push(query.trim()); // Add new query to saved queries
+        await this.storage.set('query', savedQuery);  // Save updated queries to storage
+        query = ''; // Clear query
       }
     }
-
+    // Function to get saved queries from storage
     async getStorage(){
-      return await this.storage.get('query')||[];
+      return await this.storage.get('query')||[]; // Return saved queries from storage
     }
     
   }

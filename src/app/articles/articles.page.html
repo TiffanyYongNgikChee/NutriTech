@@ -1,5 +1,6 @@
 <ion-content [fullscreen]="true" color="light">
   <ion-header>
+    <!-- Header -->
     <div class="header">
       <h1>News</h1>
       <a [routerLink]="['/home']" class="home">
@@ -8,7 +9,9 @@
     </div>
   </ion-header>
   <div class="content-background">
+    <!-- Categories -->
     <div class="categories">
+      <!-- Chip for different categories -->
       <ion-chip color="primary" (click)="nutrition()">Nutrition</ion-chip>
       <ion-chip color="secondary" (click)="exercise()">Exercise</ion-chip>
       <ion-chip color="success" (click)="wellness()">Wellness</ion-chip>
@@ -20,13 +23,15 @@
       <ion-chip color="secondary" (click)="stress()">Stress</ion-chip>
       <ion-chip color="success" (click)="food()">Food</ion-chip>
     </div>
-    
+    <!-- List of news -->
     <ion-card *ngFor="let n of searchResult">
-      <img src="{{n.image_url}}"/>
+      <img src="{{n.image_url}}"/><!-- Image -->
       <ion-card-header>
+        <!-- Description -->
         <ion-card-subtitle>{{n.description}}</ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
+            <!-- Source -->
             <a [href]="n.url" target="_blank">{{ n.source }}</a>
           </ion-card-content>
         </ion-card>

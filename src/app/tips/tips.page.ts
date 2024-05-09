@@ -30,6 +30,7 @@ export class TipsPage implements OnInit {
   ngOnInit(): void {
     // Loop through each default query
     this.defaultQuery.forEach((query, index) => {
+      // Fetch data for each default query
       this.tipsService.searchFood(query).subscribe(
         (data) => {
           // Store the results in the corresponding index of the defaultResults array
@@ -38,20 +39,21 @@ export class TipsPage implements OnInit {
       );
     });
   }
-
+  // Function to initiate search
   search(){
     this.searchService.searchQuery = this.searchQuery;
   }
-
+  // Function to navigate to the search page
   goAnotherPage()
   {
     this.route.navigate(['search']);
   }
+  // Function to navigate to the home page
   goHome()
   {
     this.route.navigate(['/home']);
   }
-
+  // Function to navigate to the details page
   goToDetails(fdcId: string) {
     this.detailsService.fdcId = fdcId;
     this.router.navigate(['/details']);

@@ -7,11 +7,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DetailsTipsService {
 
-  fdcId: string='';
+  fdcId: string=''; // Variable to store FDC ID
 
   constructor(private httpClient:HttpClient) { }
 
+  // Function to fetch food details by FDC ID
   getFoodDetails(fdcId: string): Observable<any> {
+    // Make GET request to USDA FoodData Central API to fetch food details
     return this.httpClient.get(
       `https://api.nal.usda.gov/fdc/v1/food/${fdcId}?api_key=ySUpAcWeVKmRkaJbCOJpaLvYS6mr4OScsjnaYGq0`
     );

@@ -18,21 +18,25 @@ import { DetailsTipsService } from 'src/app/services/details-tips.service';
 })
 export class SearchPage implements OnInit {
 
+  // Array to store search results
   information: any=[];
+  // Search query
   searchQuery:string='';
-
 
   constructor(private router:Router,private searchService:SearchService, private tipsService:TipsService, private detailsService:DetailsTipsService) { }
 
   ngOnInit(): void {
+    // Retrieve search query from the search service
     this.searchQuery = this.searchService.searchQuery;
-    // Now, you can use this.searchQuery to fetch results from the API
+    // Fetch data for the search query from the API
     this.tipsService.searchFood(this.searchQuery).subscribe(
       (data)=>{
+        // Store the search results
         this.information=data.foods;
       }
     )
   }
+  // Function to navigate to the details page
   goToDetails(fdcId: string) {
     this.detailsService.fdcId = fdcId;
     this.router.navigate(['/details']);

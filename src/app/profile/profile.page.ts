@@ -16,9 +16,10 @@ import { Storage } from '@ionic/storage-angular';
 })
 export class ProfilePage implements OnInit {
 
-  lastWeekWeight: number=0;
+  // Initializing last week weight and goal weight
+  lastWeekWeight: number=0; 
   goalWeight: number=0;
-
+  // Object to store health goals
   healthGoals: any = {
     weight: '',
     height: ''
@@ -28,13 +29,17 @@ export class ProfilePage implements OnInit {
   constructor(private storage:Storage) { }
 
   ngOnInit() {
+    // Load health goals when the component initializes
     this.loadHealthGoals();
   }
 
   async loadHealthGoals() {
-    await this.storage.create();
+    // Create storage
+    await this.storage.create(); 
+    // Get health goals from storage
     const goals = await this.storage.get('healthGoals');
     if (goals) {
+      // If health goals exist, set them
       this.healthGoals = goals;
       this.lastWeekWeight = goals.lastWeekWeight;
       this.goalWeight = goals.goalWeight;
@@ -42,12 +47,14 @@ export class ProfilePage implements OnInit {
   }
 
   async saveHealthGoals() {
+    // Save health goals to storage
     this.healthGoals.lastWeekWeight = this.lastWeekWeight;
     this.healthGoals.goalWeight = this.goalWeight;
     await this.storage.set('healthGoals', this.healthGoals);
   }
 
   calculateBMI() {
+    // Calculate BMI
     const weight = parseFloat(this.healthGoals.weight);
     const height = parseFloat(this.healthGoals.height) / 100; // Convert height to meters
     if (weight > 0 && height > 0) {
@@ -59,6 +66,7 @@ export class ProfilePage implements OnInit {
   }
 
   async openBrowser() {
+    // Open Omni Calculator in browser
     await Browser.open({ url: 'https://www.omnicalculator.com/'
     });
     };
